@@ -20,7 +20,7 @@
 <body>
   <div id="app">
     <section class="section">
-      <div class="container mt-5">
+      <div class="container mt-3">
         <div class="row">
           <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <div class="login-brand">
@@ -28,13 +28,13 @@
             </div>
 
             <div class="card card-primary">
-              <div class="card-header"><h2>MASUK</h2></div>
+              <div class="card-header"><h4>Login</h4></div>
 
               <div class="card-body">
                 <form method="POST" action="{{url('proses_login')}}" method="POST" id="logForm"  class="needs-validation" >
                 @csrf
                  @error('login_gagal')
-                  
+
                   <div class="alert alert-warning alert-dismissible fade show mb-2" role="alert">
                   <span class="alert-inner--text"><strong>Warning!</strong> {{ $message }}</span>
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -42,50 +42,50 @@
                       </button>
                   </div>
                   @enderror
-                  <div class="form-group mt-3">
-                    <input type="text" name="username" id="inputEmailAddress" class="form-control" required />
+                  <div class="form-group">
                     <label class="form-control-placeholder" for="username">Username</label>
-                    @if($errors->has('username'))
-                    <span class="error">{{ $errors->first('username') }}</span>
-                    @endif
+                    <input type="text" name="username" id="inputEmailAddress" class="form-control" required autofocus/>
+                        @if($errors->has('username'))
+                        <span class="error">{{ $errors->first('username') }}</span>
+                        @endif
                   </div>
+
                   <div class="form-group">
-                    <input id="password-field" type="password" class="form-control" id="inputPassword" name="password" required />
+                    <div class="d-block">
                     <label class="form-control-placeholder" for="password">Password</label>
-                    <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-                    @if($errors->has('password'))
-                    <span class="error">{{ $errors->first('password') }}</span>
-                    @endif
-                  </div>
-                  <div class="form-group">
-                    <button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign In</button>
-                  </div>
-                  <div class="form-group d-md-flex">
-                    <div class="w-50 text-left">
-                      <a href="{{url('register')}}">Sign Up</a>
+                      <div class="float-right">
+                        <a href="" class="text-small">
+                          Lupa Password?
+                        </a>
+                      </div>
                     </div>
+                    <input id="password-field" type="password" class="form-control" id="inputPassword" name="password" tabindex="2" required autocomplete="current-password">
+                        @if($errors->has('password'))
+                        <span class="error">{{ $errors->first('password') }}</span>
+                        @endif
                   </div>
+
+                  <div class="form-group">
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button>
+                  </div>
+                  <!-- <div class="form-group d-md-flex">
+                    <div class="w-50 text-left">
+                      <a href="{{url('register')}}">Register</a>
+                    </div>
+                  </div> -->
                 </form>
-                <!-- <div class="text-center mt-4 mb-3">
+                <div class="text-center mt-2 mb-3">
                   <div class="text-job text-muted">Login With Social</div>
                 </div>
-                <div class="row sm-gutters">
-                  <div class="col-6">
-                    <a class="btn btn-block btn-social btn-facebook">
-                      <span class="fab fa-facebook"></span> Facebook
-                    </a>
-                  </div>
-                  <div class="col-6">
-                    <a class="btn btn-block btn-social btn-twitter">
-                      <span class="fab fa-twitter"></span> Twitter
-                    </a>
-                  </div>
-                </div> -->
-
-              </div>
+                <div class="form-group">
+                    <button type="submit" class="form-control btn btn-secondary rounded submit px-3"><span class="fab fa-google"></span> Masuk dengan Google</button>
+                </div>
+                </div>
             </div>
-            <div class="mt-5 text-muted text-center">
-              Don't have an account? <a href="{{ route('register') }}">Create One</a>
+            </div>
+            </div>
+            <div class="mt-2 text-muted text-center">
+              Belum punya akun sebelumnya? <a href="{{ route('register') }}">Register</a>
             </div>
             <div class="simple-footer">
               Copyright &copy; Pelabuhan Mulia Raja Napitupulu 2022
